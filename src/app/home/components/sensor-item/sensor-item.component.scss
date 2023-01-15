@@ -1,0 +1,59 @@
+.sensor-item{
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: rgb(0 0 0 / 15%) 0px 5px 15px 2px;
+  height: 100%;
+
+  .sensor-image img {
+    max-width: 50%;
+    height: 7rem;
+  }
+
+  .status-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+}
+
+.title h5{
+  margin-bottom: 0.15rem;
+}
+
+.color-grey{
+  color:grey;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.img-title{
+  padding-bottom: 0.5rem;
+}
+
+.sensor-status {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.normal {
+  background-color: green;
+}
+
+.faulty {
+  background-color: darkred;
+}
+
+.date{
+  font-weight: bold;
+}

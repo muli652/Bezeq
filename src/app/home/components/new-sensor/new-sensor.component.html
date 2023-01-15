@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row new-sensor">
+        <div class="col-sm-12">
+            <form (ngSubmit)="submit()">
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="deviceTypHeb">סוג המכשיר בעברית:  </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input formControlName="name" type="text" class="form-control" required >
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="deviceType">סוג המכשיר באנגלית:  </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control"[(ngModel)]="data.DeviceType" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="WebSiteDeviceName">שם המכשיר ברשת: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="data.WebSiteDeviceName"  required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="WebSiteDeviceName">תקין: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <select class="form-control"  [(ngModel)]="data.ComponentOk">
+                                <option value="0">לא</option>
+                                <option value="1">כן</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="installDate">צימוד: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control"  [(ngModel)]="data.InstallDate" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="LastReportDate">דיווח אחרון: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control"  [(ngModel)]="data.LastReportDate" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="ManufacturerName">חברת הייצור: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" [(ngModel)]="data.ManufacturerName" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row item">
+                        <div class="col-sm-6 label-sensor">
+                            <label for="ManufacturerName">הוסף תמונה: </label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="file" id="file" (change)="handleFileInput($event.target)">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <button type="submit" class="btn btn-primary mb-2" >הוסף</button>
+                <button type="button" class="btn btn-secondary"  (click)="onCancelClick()">ביטול</button>
+            </div>
+        </div>
+    </div>
+</div>

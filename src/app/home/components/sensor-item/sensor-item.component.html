@@ -1,0 +1,40 @@
+
+  <div class="sensor-item container">
+    <div class="sensor-image row">
+      <div class="col-sm-12">
+        <img [src]="'./assets/images/sensors/' + (sensor.Picture? sensor.Picture : 'default') + '.png'">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 color-grey img-title">
+        <span>{{sensor.DeviceTypeHebrew}}</span>
+      </div>
+    </div>
+    <div class="title row">
+      <h5>{{sensor.WebSiteDeviceName}}</h5>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 status-container">
+        <div class="sensor-status" [ngClass]="{'normal': sensor.ComponentOk, 'faulty': !sensor.ComponentOk}" (click)="toggleSensorStatus()"></div>
+      </div>
+    </div>
+    <div class="sensor-date-info">
+      <div class="row">
+        <div class="col-6 color-grey text-right">
+          <span>צימוד</span>
+        </div>
+        <div class="col-6 text-left date">
+          <span>{{sensor.InstallDate | date: 'dd.MM.yyyy'}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 color-grey text-right">
+          <span>דיווח אחרון </span>
+        </div>
+        <div class="col-6 text-left date">
+          <span>{{sensor.LastReportDate | date: 'dd.MM.yyyy'}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
