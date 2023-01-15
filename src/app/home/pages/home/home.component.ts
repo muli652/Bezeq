@@ -58,10 +58,15 @@ export class HomeComponent implements OnInit {
 
   //modal dialog
   openNewSensorModal(): void {
-    const dialogRef = this.dialog.open(NewSensorComponent);
+    const dialogRef = this.dialog.open(NewSensorComponent, {
+      width: '50%',
+      height: 'auto',
+    });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe((newSensor: Sensor) => {
+      if (newSensor) {
+        this.sensors.push(newSensor);
+      }
     });
   }
 }

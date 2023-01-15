@@ -1,11 +1,10 @@
-.new-sensor{
-    direction: rtl;
+.mat-form-field {
+  padding-left: 1.5rem;
 }
 
-.label-sensor{
-    place-self: center;
-}
-
-.item{
-    margin-bottom: 1rem;
+.button-row {
+  text-align: end;
+  button {
+    margin-left: 2rem;
+  }
 }

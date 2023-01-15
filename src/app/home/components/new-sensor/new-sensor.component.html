@@ -1,95 +1,118 @@
-<div class="container">
-    <div class="row new-sensor">
-        <div class="col-sm-12">
-            <form (ngSubmit)="submit()">
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="deviceTypHeb">סוג המכשיר בעברית:  </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input formControlName="name" type="text" class="form-control" required >
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="deviceType">סוג המכשיר באנגלית:  </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control"[(ngModel)]="data.DeviceType" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="WebSiteDeviceName">שם המכשיר ברשת: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="data.WebSiteDeviceName"  required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="WebSiteDeviceName">תקין: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <select class="form-control"  [(ngModel)]="data.ComponentOk">
-                                <option value="0">לא</option>
-                                <option value="1">כן</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="installDate">צימוד: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control"  [(ngModel)]="data.InstallDate" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="LastReportDate">דיווח אחרון: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control"  [(ngModel)]="data.LastReportDate" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="ManufacturerName">חברת הייצור: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" [(ngModel)]="data.ManufacturerName" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row item">
-                        <div class="col-sm-6 label-sensor">
-                            <label for="ManufacturerName">הוסף תמונה: </label>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="file" id="file" (change)="handleFileInput($event.target)">
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="row">
-                <button type="submit" class="btn btn-primary mb-2" >הוסף</button>
-                <button type="button" class="btn btn-secondary"  (click)="onCancelClick()">ביטול</button>
-            </div>
-        </div>
+<mat-card class="new-sensor-card" dir="rtl">
+  <mat-card-title>חיישן חדש</mat-card-title>
+  <form
+    class="new-sensor-form"
+    (submit)="addSensor()"
+    [formGroup]="createNewSensor"
+  >
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [(ngModel)]="newSensor.DeviceType"
+        name="DeviceType"
+        placeholder="סוג החיישן באנגלית"
+        formControlName="DeviceType"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [(ngModel)]="newSensor.DeviceTypeHebrew"
+        name="DeviceTypeHebrew"
+        placeholder="סוג החיישן בעברית"
+        formControlName="DeviceTypeHebrew"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [(ngModel)]="newSensor.DeviceId"
+        name="DeviceId"
+        formControlName="DeviceId"
+        placeholder="מספר מזהה חיישן"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [matDatepicker]="InstallDate"
+        [(ngModel)]="newSensor.InstallDate"
+        name="InstallDate"
+        formControlName="InstallDate"
+        placeholder="תאריך צימוד"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="InstallDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #InstallDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select
+        formControlName="ComponentOk"
+        placeholder="סטאטוס"
+        [(ngModel)]="newSensor.ComponentOk"
+      >
+        <mat-option value="1">תקין</mat-option>
+        <mat-option value="0">לא תקין</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [(ngModel)]="newSensor.WebSiteDeviceName"
+        name="WebSiteDeviceName"
+        formControlName="WebSiteDeviceName"
+        placeholder="שם המכשיר ברשת"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <ngx-mat-file-input
+        placeholder="בחר תמונה"
+        accept=".png, .jpg, .jpeg"
+        formControlName="Picture"
+      >
+      </ngx-mat-file-input>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [matDatepicker]="LastReportDate"
+        [(ngModel)]="newSensor.LastReportDate"
+        name="LastReportDate"
+        formControlName="LastReportDate"
+        placeholder="תאריך דיווח אחרון"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="LastReportDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #LastReportDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        [(ngModel)]="newSensor.ManufacturerName"
+        name="ManufacturerName"
+        formControlName="ManufacturerName"
+        placeholder="שם החברה באנגלית"
+        required
+      />
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit">
+        הוסף חיישן
+      </button>
+      <button mat-raised-button color="warn" (click)="onCancelClick()">
+        ביטול
+      </button>
     </div>
-</div>
+  </form>
+</mat-card>

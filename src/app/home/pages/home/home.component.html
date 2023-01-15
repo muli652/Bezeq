@@ -1,17 +1,21 @@
 <div class="sensors-home container">
-    <div class="sensors-home-header container">
-      <span>{{sensors.length}} התקנים רשומים</span>
+  <div class="sensors-home-header row">
+    <div class="col-sm-6 align-end">
+      <span class="span-align-end">{{ sensors.length }} התקנים רשומים</span>
       <span> (</span>
-      <span>{{getSensorComponentOk(1)}} תקינים</span>
-      <span> {{getSensorComponentOk(0)}} בתקלה</span>
+      <span>{{ getSensorComponentOk(1) }} תקינים</span>
+      <span> {{ getSensorComponentOk(0) }} בתקלה</span>
       <span>)</span>
     </div>
-    <mat-grid-list [cols]="columns" (window:resize)="onResize()"  >
-      <mat-grid-tile *ngFor="let sensor of sensors" >
-          <app-sensor-item [sensor]="sensor" class="sensor-item"></app-sensor-item>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <div class="button-holder container">
-      <button type="button" class="btn btn-primary" (click)="openNewSensorModal()">חדש</button>
+    <div class="col-sm-6 left-button">
+      <button mat-raised-button type="button" (click)="openNewSensorModal()">
+        הוסף חיישן
+      </button>
     </div>
+  </div>
+  <mat-grid-list dir="rtl" [cols]="columns" (window:resize)="onResize()">
+    <mat-grid-tile *ngFor="let sensor of sensors">
+      <app-sensor-item [sensor]="sensor" class="sensor-item"></app-sensor-item>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
